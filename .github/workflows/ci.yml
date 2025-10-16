@@ -28,11 +28,6 @@ jobs:
     env:
       SECRET_KEY: 'ci-test-secret-key'
       DEBUG: '1'
-      DATABASE_NAME: ecommerce_db
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: 300501
-      DATABASE_HOST: 127.0.0.1
-      DATABASE_PORT: 5432
 
     steps:
       # 1. Hacer checkout del código
@@ -45,7 +40,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      # 3. Instalar dependencias
+      # 3. Instalar dependencias desde backend/requirements.txt
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -58,5 +53,6 @@ jobs:
       # 5. Ejecutar tests
       - name: Run tests
         run: python backend/manage.py test
+
 
 
